@@ -1,4 +1,7 @@
-func main
+package main
+
+import "fmt"
+
 type Address struct {
 	street string
 	city   string
@@ -19,6 +22,41 @@ type contactInfo struct {
 	address Address
 }
 
-func (c contactInfo) ContactDetails() string{
+func (c contactInfo) ContactDetails() string {
 	return fmt.Sprintf("Email: %s\nPhone: %s\nAddress: %s", c.email, c.phone, c.address.FullAddress())
+}
+
+type company struct {
+	name string
+	Address
+	contactInfo
+	BussinessType string //shadows the one in contactInfo
+}
+
+func (c company) GetProfile() {
+	fmt.Printf("Company Name: %s\n", c.name)
+	fmt.Printf("loaction: %s\n", c.FullAddress())
+	fmt.Printf("Street (promoted): %s\n", c.street)
+	fmt.Printf("Email (promoted): %s\n", c.email)
+	fmt.Printf("Business Type: %s\n", c.BussinessType)
+
+}
+
+func main() {
+	comp := company{
+		name: "Tech Innovators Inc.",
+		Address: Address{
+			street: "123 Innovation Drive",
+			city:   "Tech City",
+			state:  "CA",
+			zip:    "94025",
+		},
+		contactInfo: contactInfo{
+			email: "contact@inovate.com",
+			phone: "555-1234",
+		},
+		BussinessType: "Software Development",
+	}
+	comp.GetProfile()
+
 }
