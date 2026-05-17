@@ -84,5 +84,25 @@ func main() {
 	}
 	fmt.Println("\n------ Savings Account Operation ")
 
-	fmt.Println(savAcc.account.String())
+	fmt.Println("Final Savings Account Balance:", savAcc.account.String())
+
+	ovdAcc := overdraftAccount{
+		account: account{
+			AccountNumber: "OA654321",
+			Balance:       500.00,
+			OwnerName:     "Bob Johnson",
+		},
+		OverdraftLimit: 200.00,
+	}
+	fmt.Println("\n------ Overdraft Account Operation ")
+
+	fmt.Println(ovdAcc.account.String())
+	err := ovdAcc.Deposit(300.00)
+	if err != nil {
+		fmt.Println("Error depositing to overdraft account:", err)
+	}
+	err = ovdAcc.Withdraw(10000.00)
+	if err != nil {
+		fmt.Println("Error withdrawing from overdraft account:", err)
+	}
 }
