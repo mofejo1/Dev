@@ -1,0 +1,16 @@
+package main
+
+import (
+	"fmt"
+	"unicode"
+)
+
+func main() {
+	str := "Hello" //in go  each is an ASCII character, but they are all unicode characters, hence this is 5 bytes
+	//len counts the number of bytes in a string, not the number of characters
+	// ascii uses single byte to represent characters, while unicode can use multiple bytes to represent characters
+
+	userName := "Jóse" // this is 6 bytes, because the 'ó' character is represented by 2 bytes in UTF-8 encoding
+
+	fmt.Printf("Length of str: %d\n", len(str))
+}

@@ -33,4 +33,13 @@ func main() {
 
 	status := fmt.Sprintf("Application: %s, Version: %.1f, Port: %d, Enabled: %t", appName, version, port, isEnabled)
 	fmt.Println(status)
+
+	item1 := ConfigItem{Key: "API_KEY", Value: "http://localhost:3000/api", IsSet: true}
+	item2 := ConfigItem{Key: "DB_HOST", Value: "5000", IsSet: true}
+	item3 := ConfigItem{Key: "DEBUG_MODE", Value: "false", IsSet: false}
+
+	fmt.Printf("Config Item 1: %v\n", item1)
+	fmt.Printf("Config Item 2: %+v\n", item2)
+	fmt.Printf("Config Item 3: %#v\n", item3)
+
 }
